@@ -52,3 +52,15 @@ app.post('/modifier', (req, res) => {
 	})
 })
 
+app.get('/delete/:id', (req, res) => {
+	var critere = ObjectID(req.params.id)
+
+	db.collection('adresse').findOneAndDelete( {'_id': critere} ,(err, resultat) => {
+		if (err) return res.send(500, err)
+		var cursor = db.collection('adresse').find().toArray(function(err, resultat) {
+			if (err) return console.log(err)
+			res.render('gabarit.ejs', {adresse: resultat})
+		})
+	})
+})
+
