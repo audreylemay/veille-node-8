@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 	}) 
 })
 
-
+/*méthode pour ajouter une adresse*/
 app.post('/ajouter', (req, res) => {
 	db.collection('adresse').save(req.body, (err, result) => {
 		if (err) return console.log(err)
@@ -42,6 +42,7 @@ app.post('/ajouter', (req, res) => {
 	})
 })
 
+/*méthode pour modifier une adresse*/
 app.post('/modifier', (req, res) => {
 	console.log('util = ' + util.inspect(req.body))
 	req.body._id = ObjectID(req.body._id)
@@ -52,6 +53,7 @@ app.post('/modifier', (req, res) => {
 	})
 })
 
+/*méthode pour supprimer une adresse*/
 app.get('/delete/:id', (req, res) => {
 	var critere = ObjectID(req.params.id)
 
@@ -64,6 +66,7 @@ app.get('/delete/:id', (req, res) => {
 	})
 })
 
+/*méthode pour trier les adresses*/
 app.get('/trier/:cle/:ordre', (req, res) => {
 	let cle = req.params.cle
 	let ordre = (req.params.ordre == 'asc' ? 1 : -1)
