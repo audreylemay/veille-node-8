@@ -7,14 +7,14 @@
 		"courriel": "asc"
 	}
 
-	if(typeof cle !== "undefined" && cle) {
+	if(locals.cle) {
 		objOrdre[cle]=ordre;
 	}
 %>
 
 <table class="tableau">
 	<tr>
-		<th><a href='/trier/id/<%= objOrdre._id %>'>ID</a></th>
+		<th><a href='/trier/_id/<%= objOrdre._id %>'>ID</a></th>
 		<th><a href='/trier/nom/<%= objOrdre.nom %>'>Nom</a></th> 
 		<th><a href='/trier/prenom/<%= objOrdre.prenom %>'>Prenom</a></th>
 		<th><a href='/trier/telephone/<%= objOrdre.telephone %>'>Telephone</a></th>
