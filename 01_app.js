@@ -42,3 +42,13 @@ app.post('/ajouter', (req, res) => {
 	})
 })
 
+app.post('/modifier', (req, res) => {
+	console.log('util = ' + util.inspect(req.body))
+	req.body._id = ObjectID(req.body._id)
+
+	db.collection('adresse').save(req.body, (err, result) => {
+		if (err) return console.log(err)
+		console.log('sauvegarder dans la BD')
+	})
+})
+
