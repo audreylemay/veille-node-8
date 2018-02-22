@@ -22,19 +22,19 @@ const tabTel = [
 	"450-666-6666",
 	"123-456-7890",
 	"666-666-6666",
-	"420-420-4204"
+	"420-420-4204",
 	"514-515-5657"
 ]
 
 const tabEmail = [
 	"lilb@bb.com",
 	"boy@boy.com",
-	"burger@blchr.com"
+	"burger@blchr.com",
 	"strgr@thngs.com",
 	"lr@hxh.com"
 ]
 
-const tableau {
+const tableau =  {
 	tabNom : tabNom,
 	tabPrenom : tabPrenom,
 	tabTel : tabTel,
