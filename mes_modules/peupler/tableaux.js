@@ -33,3 +33,12 @@ const tabEmail = [
 	"strgr@thngs.com",
 	"lr@hxh.com"
 ]
+
+const tableau {
+	tabNom : tabNom,
+	tabPrenom : tabPrenom,
+	tabTel : tabTel,
+	tabEmail : tabEmail
+}
+
+module.exports = tableau;
