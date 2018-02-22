@@ -1,3 +1,5 @@
+"use strict";
+const peupler = require("./mes_modules/peupler");
 const express = require('express');
 const app = express();
 const fs = require('fs');
@@ -23,6 +25,9 @@ MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresse', (err, database) 
 
 // engin de vue par défaut ejs , sert à génrer des templates
 app.set('view engine', 'ejs'); 
+
+// test de la fonction peupler
+console.log("dans main.js :" + util.inspect(peupler()));
 
 /* La route / par défaut permet d'afficher les adresses dans un tableau */ 
 app.get('/', (req, res) => {
