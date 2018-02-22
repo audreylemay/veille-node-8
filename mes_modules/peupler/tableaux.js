@@ -1,11 +1,19 @@
 "use strict";
 
-const tabNom = {
+const tabNom = [
 	"Tremblay",
 	"Meme",
 	"Belcher",
 	"Hopper",
 	"Harbour",
 	"Lemay"
-}
+]
 
+const tabPrenom = [
+	"Jim",
+	"David",
+	"Bob",
+	"Tina",
+	"Audrey",
+	"Leorio"
+]
