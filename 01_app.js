@@ -27,7 +27,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresse', (err, database) 
 app.set('view engine', 'ejs'); 
 
 // test de la fonction peupler
-console.log("dans main.js :" + util.inspect(peupler()));
+console.log("dans main.js :" + util.inspect(peupler().nom));
 
 /* La route / par défaut permet d'afficher les adresses dans un tableau */ 
 app.get('/', (req, res) => {
@@ -90,4 +90,8 @@ app.get('/vider', (req, res) => {
 		res.redirect('/')
 	})
 })
+
+
+
+
 
