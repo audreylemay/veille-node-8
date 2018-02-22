@@ -77,3 +77,12 @@ app.get('/trier/:cle/:ordre', (req, res) => {
 	})
 })
 
+/*méthode pour supprimer tout les adresses*/
+app.get('/vider', (req, res) => {
+	db.collection('adresse').remove(req.body, (err, result) => {
+		if (err) return console.log(err)
+		console.log('collection supprimée')
+		res.redirect('/')
+	})
+})
+
