@@ -28,14 +28,15 @@ const peupler = () => {
 	let positionEmail = Math.floor(Math.random() * maxEmail);
 	let email = tableau.tabEmail[positionEmail];
 
+
+
 	return {
 		nom : nom, 
 		prenom : prenom,
-		tel : tel,
-		email : email
+		telephone : tel,
+		courriel : email
 	}
 
-	return "fin";
 
 }
 
