@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<%- include('composants/head') %>
+	<body>
+		<%- include('composants/entete') %>
+
+		<section class="contenu">
+			
+
+			<% for (elm of adresse) { %>
+				<% for (p in elm) { %>
+					<h1><%= elm[p]%></h1>
+				<% } %>
+
+			<% } %>
+
+		</section>
+		
+		<%- include('composants/footer') %>
+
+	</body>
+</html>
