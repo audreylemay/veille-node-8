@@ -27,8 +27,8 @@ const tabTel = [
 ]
 
 const tabEmail = [
-	"lilb@bb.com",
-	"boy@boy.com",
+	"lilb@hotmail.com",
+	"boy@yahoo.com",
 	"burger@blchr.com",
 	"strgr@thngs.com",
 	"lr@hxh.com"
