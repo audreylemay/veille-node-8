@@ -91,6 +91,15 @@ app.get('/vider', (req, res) => {
 	})
 })
 
+app.get('/peupler', (req, res) => {
+	let nouvelleListe = peupler();
+	db.collection('adresse').insert(nouvelleListe, (err, result) => {
+		if (err) return console.log(err)
+		console.log("ajout d'un membre")
+		res.redirect('/')
+	})
+})
+
 
 
 
