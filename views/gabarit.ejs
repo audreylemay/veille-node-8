@@ -3,11 +3,13 @@
 	<%- include('composants/head') %>
 	<body>
 		<%- include('composants/entete') %>
+		<%- include('composants/recherche') %>
 		<%- include('composants/form_post') %>
 
 		<section class="contenu">
 			
 			<%- include('composants/adr') %>
+
 			
 			<form action="/ajouter" method="POST" >
 				<input type = "text" placeholder="Nom" name = "nom"> 
