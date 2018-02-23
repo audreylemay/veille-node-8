@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 	let cursor = db.collection('adresse').find().toArray(function(err, resultat) {
 		if (err) return console.log(err)
 		// affiche le rendu du contenu
-		res.render('gabarit.ejs', {adresse: resultat})
+		res.render('accueil.ejs', {adresse: resultat})
 	}) 
 })
 
@@ -43,7 +43,7 @@ app.get('/list', (req, res) => {
 	let cursor = db.collection('adresse').find().toArray(function(err, resultat) {
 		if (err) return console.log(err)
 		// affiche le rendu du contenu
-		res.render('gabarit_adresse.ejs', {adresse: resultat})
+		res.render('gabarit.ejs', {adresse: resultat})
 	}) 
 })
 
@@ -96,7 +96,7 @@ app.get('/vider', (req, res) => {
 	db.collection('adresse').remove(req.body, (err, result) => {
 		if (err) return console.log(err)
 		console.log('collection supprimée')
-		res.redirect('/')
+		res.redirect('/list')
 	})
 })
 
@@ -106,9 +106,47 @@ app.get('/peupler', (req, res) => {
 	db.collection('adresse').insert(nouvelleListe, (err, result) => {
 		if (err) return console.log(err)
 		console.log("ajout d'un membre")
-		res.redirect('/')
+		res.redirect('/list')
 	})
 })
+
+app.get('/profil/:id', function (req, res) {
+	let id  = ObjectID(req.params.id);
+	let cursor = db.collection('adresse').find({'_id': id}).toArray((err, resultat) =>{
+		if (err) return console.log(err);
+		//console.log(JSON.stringfy(resultat));
+		// transfert du contenu vers la vue index.ejs (renders)
+		// affiche le contenu de la BD 
+	  	res.render('profil.ejs', {adresse: resultat});
+  	});
+});
+
+app.post('/rechercher', (req, res) => {
+	console.log('util = ' + util.inspect(req.body))
+	req.body._id = ObjectID(req.body._id)
+
+	let texteRecherche = req.body.recherche;
+
+	let requete = {
+    				$or: [ 
+    						{ 'prenom': {'$regex': '^' + texteRecherche,  '$options' : 'i' }},
+    						{ 'nom': {'$regex': '^' + texteRecherche,  '$options' : 'i' }},
+    						{ 'telephone': {'$regex': '^' + texteRecherche,  '$options' : 'i' }},
+    						{ 'courriel': {'$regex': '^' + texteRecherche,  '$options' : 'i' }}
+    				]
+    			};
+
+	let cursor = db.collection('adresse').find(requete).toArray((err, resultat) =>{
+		if (err) return console.log(err);
+		//console.log(JSON.stringfy(resultat));
+		// transfert du contenu vers la vue index.ejs (renders)
+		// affiche le contenu de la BD 
+	  	res.render('gabarit.ejs', {adresse: resultat});
+  	});
+})
+
+
+
 
 
 
