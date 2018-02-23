@@ -1,32 +1,59 @@
-@grisPale : #bababa;
+@bleuFonce : #7893bf;
 @blancGris : #e0e0e0;
+@bleu : #83a5db;
 
 html {
 	font-family:Arial;
-
 	a {
 		color:black;
 	}
 }
 
 .entete {
-	height:100px;
-	display:flex;
-	align-items: center;
+
+	background-color:@bleu;
+	nav {
+		display:flex;
+		align-items:center;
+		justify-content: space-around;
+		height:10vh;
+	}
 
 	a {
-		margin-left:10px;
 		text-decoration: none;
 		font-weight:bold;
 		font-size:20px;
 	}
 }
 
-form {
-	height:50vh;
+
+#mon_formulaire {
+	display:none;
+}
+
+.tableau {
+
+	table {
+  		width: 100%;
+	}
+
+	td, th {
+  		padding: 10px 20px;
+  		text-align: left;
+  		border: 1px solid #ccc;
+	}
+
+	th {
+		background-color: @bleu;
+	}
+}
+
+.contenu {
 	display:flex;
-	align-items: center;
-	background-color: @blancGris;
+	height:600px;
+	flex-direction:column;
+	justify-content: space-around;
+	overflow:scroll;
 }
 
 footer {
@@ -34,5 +61,27 @@ footer {
 	display:flex;
 	align-items: center;
 	justify-content: space-around;
-	background-color: @grisPale;
+	background-color: @bleuFonce;
+}
+
+/*Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
