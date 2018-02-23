@@ -91,6 +91,7 @@ app.get('/vider', (req, res) => {
 	})
 })
 
+/*méthode pour peupler la bdd */
 app.get('/peupler', (req, res) => {
 	let nouvelleListe = peupler();
 	db.collection('adresse').insert(nouvelleListe, (err, result) => {
