@@ -29,12 +29,21 @@ app.set('view engine', 'ejs');
 // test de la fonction peupler
 console.log("dans main.js :" + util.inspect(peupler().nom));
 
-/* La route / par défaut permet d'afficher les adresses dans un tableau */ 
+/* La route / par défaut permet d'afficher la page d'accueil */ 
 app.get('/', (req, res) => {
 	let cursor = db.collection('adresse').find().toArray(function(err, resultat) {
 		if (err) return console.log(err)
 		// affiche le rendu du contenu
 		res.render('gabarit.ejs', {adresse: resultat})
+	}) 
+})
+
+/* La route /list  permet d'afficher les adresses dans un tableau */ 
+app.get('/list', (req, res) => {
+	let cursor = db.collection('adresse').find().toArray(function(err, resultat) {
+		if (err) return console.log(err)
+		// affiche le rendu du contenu
+		res.render('gabarit_adresse.ejs', {adresse: resultat})
 	}) 
 })
 
