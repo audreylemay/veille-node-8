@@ -18,6 +18,7 @@ html {
 		align-items:center;
 		justify-content: space-around;
 		height:10vh;
+		flex-direction:column;
 	}
 
 	a {
@@ -85,4 +86,25 @@ footer {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
+}
+
+.courriel, .telephone {
+	display:none;
+}
+
+/*Media queries */
+
+@media (min-width:801px)  { 
+
+	.courriel, .telephone {
+		display: table-cell;
+	}
+
+	.entete {
+
+		nav {
+			flex-direction:row;
+		}
+	}
+
 }
