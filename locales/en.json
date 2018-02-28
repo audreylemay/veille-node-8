@@ -1,12 +1,13 @@
 {
 	"accueil": "Home",
-	"vider": "Erase",
 	"adresse": "Members",
 	"peupler": "Add",
+	"recherche": "Search",
+	"enregistrer": "Register",
 	"id": "Id",
 	"nom": "Name",
 	"prenom": "First Name",
 	"telephone": "Phone #",
-	"ajouter": "Add",
-	"courriel": "courriel"
+	"courriel": "Email",
+	"vider": "Erase"
 }

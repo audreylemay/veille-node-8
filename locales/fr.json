@@ -7,5 +7,7 @@
 	"courriel": "Courriel",
 	"nom": "Nom",
 	"prenom": "Prenom",
-	"telephone": "Telephone"
+	"telephone": "Telephone",
+	"recherche": "Recherche",
+	"enregistrer": "Enregistrer"
 }
