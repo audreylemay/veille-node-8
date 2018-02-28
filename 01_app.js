@@ -5,14 +5,25 @@ const app = express();
 const fs = require('fs');
 const util = require("util");
 app.use(express.static('public'));
-
+const i18n = require("i18n");
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
 const MongoClient = require('mongodb').MongoClient // le pilote
 const ObjectID = require('mongodb').ObjectID;
-const bodyParser= require('body-parser')
+const bodyParser= require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}))
 app.set('view engine', 'ejs');
 
-let db
+i18n.configure({ 
+   locales : ['fr', 'en'],
+   cookie : 'langueChoisie', 
+   directory : __dirname + '/locales' });
+
+/* Ajouter l'objet i18n à l'objet global «res» */
+app.use(i18n.init);
+
+
+let db;
 
 MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresse', (err, database) => {
 	if (err) return console.log(err)
@@ -22,6 +33,8 @@ MongoClient.connect('mongodb://127.0.0.1:27017/carnet_adresse', (err, database) 
 		console.log('connexion à la BD et on écoute sur le port 8081')
 	})
 })
+
+
 
 // engin de vue par défaut ejs , sert à génrer des templates
 app.set('view engine', 'ejs'); 
@@ -34,6 +47,7 @@ app.get('/', (req, res) => {
 	let cursor = db.collection('adresse').find().toArray(function(err, resultat) {
 		if (err) return console.log(err)
 		// affiche le rendu du contenu
+		console.log("cookie =" + req.cookies.langueChoisie);
 		res.render('accueil.ejs', {adresse: resultat})
 	}) 
 })
@@ -144,6 +158,17 @@ app.post('/rechercher', (req, res) => {
 	  	res.render('gabarit.ejs', {adresse: resultat});
   	});
 })
+
+
+
+app.get('/:local(en|fr)', function (req,res) {
+	console.log(req.params.local);
+	res.cookie('langueChoisie', req.params.local);
+	res.setLocale(req.params.local);
+
+	res.redirect(req.headers.referer);
+});
+
 
 
 
